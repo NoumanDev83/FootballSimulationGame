@@ -21,7 +21,7 @@ public class TPPSimulation : Singleton<TPPSimulation>
         playerSpeed.minValue = 1f;
         playerSpeed.maxValue = 10f;
 
-        saveButton.onClick.AddListener(ApplySettings);
+        //saveButton.onClick.AddListener(ApplySettings);
         
         int childCount1 =  Team1Parent.transform.childCount;
         Team1Control = new GameObject[childCount1];

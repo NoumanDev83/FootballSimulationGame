@@ -33,7 +33,7 @@ namespace Assets.FootballGameEngine_Indie_.Scripts.States.Managers.GameManagerSt
                     // play sound
                     GameManager.Instance.OnButtonClicked();
                     Machine.ChangeState<MatchPausedState>();
-                    TPPSimulation.Instance.TurnOnTPP_Panel();
+                    //TPPSimulation.Instance.TurnOnTPP_Panel();
                     Debug.Log("game paused");
                 });
 

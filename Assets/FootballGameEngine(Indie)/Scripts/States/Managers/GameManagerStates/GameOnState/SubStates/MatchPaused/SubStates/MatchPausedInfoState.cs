@@ -66,7 +66,7 @@ namespace Assets.FootballGameEngine_Indie_.Scripts.States.Managers.GameManagerSt
 
                     // resume match
                     ActionUtility.Invoke_Action(OnResumeMatch);
-                    TPPSimulation.Instance.TurnOffTPP_Panel();
+                    //TPPSimulation.Instance.TurnOffTPP_Panel();
                 });
 
             GraphicsManager.Instance.GameOnMainMenu

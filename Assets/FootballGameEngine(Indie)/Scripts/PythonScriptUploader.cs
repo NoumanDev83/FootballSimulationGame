@@ -3,12 +3,14 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;  // For TextMeshPro
 using System.IO;
 
 public class PythonScriptUploader : MonoBehaviour
 {
-    public Button uploadButton,teamTwoUploadBtn;
-    public PythonScriptRunner scriptManager;  // Reference to PythonScriptRunner
+    public Button uploadButton, teamTwoUploadBtn;
+    public TMP_Text teamOneScriptNameText;  // Text field to display the script name for Team 1
+    public TMP_Text teamTwoScriptNameText;  // Text field to display the script name for Team 2
     private string saveFolder;
 
     void Start()
@@ -21,9 +23,9 @@ public class PythonScriptUploader : MonoBehaviour
             Directory.CreateDirectory(saveFolder);
             Debug.Log("Created folder: " + saveFolder);
         }
-        
-        uploadButton.onClick.AddListener(() => UploadScriptForTeam(1));
-        teamTwoUploadBtn.onClick.AddListener(() => UploadScriptForTeam(2));
+
+        uploadButton.onClick.AddListener(() => UploadScriptForTeam(1));  // Upload for Team 1
+        teamTwoUploadBtn.onClick.AddListener(() => UploadScriptForTeam(2));  // Upload for Team 2
     }
 
     void UploadScriptForTeam(int teamNumber)
@@ -42,10 +44,20 @@ public class PythonScriptUploader : MonoBehaviour
                 Debug.Log($"✅ Team {teamNumber} uploaded script: {fileName}");
                 Debug.Log($"📁 Saved at: {savePath}");
 
-                if (scriptManager != null)
+                // Update the respective team's script name display
+                if (teamNumber == 1)
                 {
-                    scriptManager.LoadScriptList();
-                    scriptManager.UpdateScriptDropdown(); // Refresh dropdown after upload
+                    if (teamOneScriptNameText != null)
+                    {
+                        teamOneScriptNameText.text = fileName;  // Update the text field for Team 1
+                    }
+                }
+                else if (teamNumber == 2)
+                {
+                    if (teamTwoScriptNameText != null)
+                    {
+                        teamTwoScriptNameText.text = fileName;  // Update the text field for Team 2
+                    }
                 }
             }
             else
@@ -57,6 +69,4 @@ public class PythonScriptUploader : MonoBehaviour
         Debug.LogWarning("⚠ This feature only works in the Unity Editor.");
 #endif
     }
-
-
 }

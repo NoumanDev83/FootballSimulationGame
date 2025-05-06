@@ -72,7 +72,7 @@ public class PythonScriptRunner : MonoBehaviour
 
     public void RunPythonScript(string path)
     {
-        string pythonPath = @"C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe"; // Adjust for your Python version
+        string pythonPath = @"C:\Users\HP\AppData\Local\Programs\Python\Python39\python.exe"; // Adjust for your Python version
         ProcessStartInfo psi = new ProcessStartInfo
         {
             FileName = pythonPath,  // Use the full path here
